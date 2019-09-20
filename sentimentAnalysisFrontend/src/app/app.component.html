@@ -1,0 +1,56 @@
+
+<!-- <mat-grid-list cols="4" rowHeight="200px">
+    <mat-grid-tile [colspan]="tiles.cols" [rowspan]="tiles.rows" [style.background]="tiles.color">
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="mtiles.cols" [rowspan]="mtiles.rows" [style.background]="mtiles.color">
+        <mat-grid-tile-header>Hello</mat-grid-tile-header>
+     </mat-grid-tile>
+    <mat-grid-tile [colspan]="tiles.cols" [rowspan]="tiles.rows" [style.background]="tiles.color">
+    </mat-grid-tile>
+  </mat-grid-list> -->
+<mat-sidenav-container>
+    <mat-toolbar>My {{title}}</mat-toolbar>
+    <mat-sidenav-content> 
+      <div>
+        <mat-tab-group>
+          <mat-tab label="Analyse"> <div style="padding-right: 75%;">
+              <mat-form-field appearance="outline">
+                <mat-label>Enter your Text Here</mat-label>
+                <textarea matInput placeholder="Textarea" #text></textarea>
+              </mat-form-field>
+            <button mat-raised-button color="primary" (click)="analyse(text.value)">Analyse the sentiment</button>
+            <mat-icon matSuffix style="font-size: 1000% !important;">{{resultEmoji.emoji}}</mat-icon>
+             <span>score: {{result?.score}}</span>  
+          </div>
+          </mat-tab>
+          <mat-tab label="Tokens">
+              <mat-list>
+                  <mat-list-item *ngFor="let item of result?.tokens; let i = index">
+                    {{i}}] {{item}}
+                    <mat-divider></mat-divider>
+                  </mat-list-item>
+                  
+                </mat-list>
+          </mat-tab>
+        
+          <mat-tab label="Negetive tokens">
+              <mat-list>
+                  <mat-list-item *ngFor="let item of result?.negative; let i = index">
+                    {{i}}] {{item}}
+                    <mat-divider></mat-divider>
+                  </mat-list-item>
+                  
+                </mat-list>
+          </mat-tab>
+          <mat-tab label="Positive tokens">
+              <mat-list>
+                  <mat-list-item *ngFor="let item of result?.positive; let i = index">
+                    {{i}}] {{item}}
+                    <mat-divider></mat-divider>
+                  </mat-list-item>
+                  
+                </mat-list>
+          </mat-tab>
+        </mat-tab-group></div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
